@@ -1,0 +1,20 @@
+class Solution {
+  /**
+   * @param {number[]} stones
+   * @return {number}
+   */
+  lastStoneWeight(stones) {
+    while (stones.length > 1) {
+      stones.sort((a, b) => a - b);
+      if (stones[stones.length - 1] === stones[stones.length - 2]) {
+        stones.pop();
+        stones.pop();
+      } else {
+        stones[stones.length - 2] = Math.abs(stones[stones.length - 1] - stones[stones.length - 2]);
+        stones.pop();
+      }
+    }
+
+    return stones.length ? stones[0] : 0;
+  }
+}
