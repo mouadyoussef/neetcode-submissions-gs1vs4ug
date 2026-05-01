@@ -16,33 +16,29 @@ class Solution {
      * @return {boolean}
      */
     isSubtree(root, subRoot) {
-        let stack = [root]
+        const stack = [root];
 
-        while (stack.length > 0) {
-            let node = stack.pop();
+        while (stack.length) {
+            const node = stack.pop();
             if (this.isSame(node, subRoot)) {
                 return true;
             }
-            if (node.left) {
-                stack.push(node.left)
-            }
-            if (node.right) {
-                stack.push(node.right)
-            }
-        }
 
+            node.left && stack.push(node.left);
+            node.right && stack.push(node.right);
+        }
         return false;
     }
 
-    isSame(t1, t2) {
-        if (!t1 && !t2) {
+    isSame(q, p) {
+        if (!q && !p) {
             return true;
         }
 
-        if (t1?.val !== t2?.val) {
+        if (q?.val !== p?.val) {
             return false;
         }
 
-        return this.isSame(t1.left, t2.left) && this.isSame(t1.right, t2.right)
+        return this.isSame(q.left, p.left) && this.isSame(q.right, p.right);
     }
 }
