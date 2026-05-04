@@ -60,9 +60,6 @@ class Solution {
 
         const res = [];
 
-        console.log(pacificMemo)
-        console.log(atlanticMemo)
-
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
                 if (pacificMemo[r][c] && atlanticMemo[r][c]) {
